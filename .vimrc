@@ -73,11 +73,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
-Plug 'theniceboy/bullets.vim'
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle'  }
-Plug 'iamcco/markdown-preview.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" This to install node
+Plug 'suan/vim-instant-markdown'
 call plug#end()
  
 " augroup vimrc-incsearch-highlight
@@ -103,6 +104,7 @@ nnoremap<F5>   :call PreviewHtml()<CR>
 nnoremap <leader>w :w <cr>
 map <space><CR> :nohlsearch<CR>
 inoremap jj <esc>
+map <c-p> :FZF<CR>
 " ===
 " === split
 " ===
@@ -123,12 +125,6 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-
-" markdownPreview
-nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
-imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
-nmap <silent> <F9> <Plug>StopMarkdownPreview    " 普通模式
-imap <silent> <F9> <Plug>StopMarkdownPreview    " 插入模式
 
 " =============================== "
 " === Self defined funcations === "
