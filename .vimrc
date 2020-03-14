@@ -65,6 +65,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
+Plug 'luochen1990/rainbow'
 Plug 'zxqfl/tabnine-vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
@@ -77,6 +78,10 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'less']  }
+Plug 'Yggdroot/indentLine'
+" This to install ctags
+Plug 'majutsushi/tagbar'
 " This to install node
 Plug 'suan/vim-instant-markdown'
 call plug#end()
@@ -91,6 +96,8 @@ call plug#end()
 let mapleader=','
 let g:mapleader=','
 
+ let g:rainbow_active = 1
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "These are used for open vimrc and activate vimrc without exitingvim
 nnoremap <leader>v :call OpenVimrc()<cr>
@@ -105,6 +112,7 @@ nnoremap <leader>w :w <cr>
 map <space><CR> :nohlsearch<CR>
 inoremap jj <esc>
 map <c-p> :FZF<CR>
+nmap <F8> :TagbarToggle<CR>
 " ===
 " === split
 " ===
