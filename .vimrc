@@ -76,8 +76,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'voldikss/vim-translator'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug']  }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'less']  }
 Plug 'Yggdroot/indentLine'
 " This to install ctags
@@ -95,8 +97,7 @@ call plug#end()
 " setting for leader keymapping
 let mapleader=','
 let g:mapleader=','
-
- let g:rainbow_active = 1
+let g:rainbow_active = 1
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "These are used for open vimrc and activate vimrc without exitingvim
@@ -108,8 +109,8 @@ nnoremap <leader>a :source ~/.vimrc<cr>
 " ====================================== "
 map <F10> :NERDTreeToggle<CR>
 nnoremap<F5>   :call PreviewHtml()<CR>
-nnoremap <leader>w :w <cr>
 map <space><CR> :nohlsearch<CR>
+nnoremap<leader>g :w<cr>
 inoremap jj <esc>
 map <c-p> :FZF<CR>
 nmap <F8> :TagbarToggle<CR>
@@ -127,6 +128,7 @@ nnoremap <down> :res -5<CR>
 nnoremap <left> :vertical resize-5<CR>
 nnoremap <right> :vertical resize+5<CR>
 map <space> viw
+
 " easymotion
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
@@ -134,14 +136,25 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
+" vim-translate
+"der>t 翻译光标下的文本，在命令行回显
+nmap <silent> <Leader>t <Plug>Translate
+vmap <silent> <Leader>t <Plug>TranslateV
+" Leader>w 翻译光标下的文本，在窗口中显示
+nmap <silent> <Leader>w <Plug>TranslateW
+vmap <silent> <Leader>w <Plug>TranslateWV
+" Leader>r 替换光标下的文本为翻译内容
+nmap <silent> <Leader>r <Plug>TranslateR
+vmap <silent> <Leader>r <Plug>TranslateRV
+
 " =============================== "
 " === Self defined funcations === "
 " =============================== "
 
 function! PreviewHtml() 
-	exec 'w'
-	if &filetype == 'html'
-		exec '!chromium %'
+exec 'w'
+if &filetype == 'html'
+	exec '!chromium %'
 endif
 endfunction
 
