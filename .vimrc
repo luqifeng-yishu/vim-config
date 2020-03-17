@@ -19,8 +19,8 @@ set cursorline
 set cindent
 set tabstop=4
 set autoindent
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 " 搜索
 set hlsearch
@@ -106,9 +106,23 @@ hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 "aleplug
-
+let b:ale_fixers = ['prettier', 'eslint']
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
+let g:ale_fixers = {
+			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+			\   'javascript': ['eslint'],
+			\}
+
+
+
+  let g:ale_fixers = {
+  \   'javascript': [
+  \       'DoSomething',
+  \       'eslint',
+  \       {buffer, lines -> filter(lines, 'v:val !=~ ''^\s*//''')},
+  \   ],
+  \}
 
 "These are used for open vimrc and activate vimrc without exitingvim
 nnoremap <leader>v :call OpenVimrc()<cr>
