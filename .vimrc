@@ -78,9 +78,11 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'voldikss/vim-translator'
 Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug']  }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'less']  }
+Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 " This to install ctags
 Plug 'majutsushi/tagbar'
@@ -98,7 +100,15 @@ call plug#end()
 let mapleader=','
 let g:mapleader=','
 let g:rainbow_active = 1
-" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+colorscheme space-vim-dark
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
+"aleplug
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
 
 "These are used for open vimrc and activate vimrc without exitingvim
 nnoremap <leader>v :call OpenVimrc()<cr>
@@ -110,8 +120,8 @@ nnoremap <leader>a :source ~/.vimrc<cr>
 map <F10> :NERDTreeToggle<CR>
 nnoremap<F5>   :call PreviewHtml()<CR>
 map <space><CR> :nohlsearch<CR>
-nnoremap<leader>g :w<cr>
-inoremap jj <esc>
+nnoremap<leader>m :w<cr>
+inoremap kk <esc>
 map <c-p> :FZF<CR>
 nmap <F8> :TagbarToggle<CR>
 " ===
