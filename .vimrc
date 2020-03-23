@@ -40,6 +40,9 @@ set scrolloff=10
 " 开启256色支持
 set t_Co=256
 
+" use system clipboard
+set clipboard=unnamedplus " yay -S xsel"
+ 
 " 允许光标出现在最后一个字符的后面
 set virtualedit=block,onemore
 
@@ -48,7 +51,6 @@ set whichwrap+=<,>,h,l
 
 " 禁止自动换行
 " set nowrap
-
 " 光标闪烁
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -67,6 +69,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'luochen1990/rainbow'
 Plug 'zxqfl/tabnine-vim'
+Plug 'francoiscabrol/ranger.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-startify'
@@ -97,8 +100,8 @@ call plug#end()
 " augroup END
 
 " setting for leader keymapping
-let mapleader=','
-let g:mapleader=','
+let mapleader=';'
+let g:mapleader=';'
 let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 colorscheme space-vim-dark
@@ -131,7 +134,7 @@ nnoremap <leader>a :source ~/.vimrc<cr>
 " ====================================== "
 " === Self defined keyboard shortcuts === "
 " ====================================== "
-map <F10> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 nnoremap<F5>   :call PreviewHtml()<CR>
 map <space><CR> :nohlsearch<CR>
 nnoremap<leader>m :w<cr>
@@ -159,7 +162,9 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+noremap Y "+y
 " vim-translate
 "der>t 翻译光标下的文本，在命令行回显
 nmap <silent> <Leader>t <Plug>Translate
