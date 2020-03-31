@@ -91,6 +91,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'majutsushi/tagbar'
 " This to install node
 Plug 'suan/vim-instant-markdown'
+" nerdtree font
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
  
 " augroup vimrc-incsearch-highlight
