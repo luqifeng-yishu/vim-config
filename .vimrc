@@ -87,6 +87,7 @@ Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug']  }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'less']  }
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " This to install ctags
 Plug 'majutsushi/tagbar'
 " This to install node
@@ -106,6 +107,16 @@ let mapleader=';'
 let g:mapleader=';'
 let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" disable warning :"vim-go:iniialized gopls"
+let g:go_gopls_enabled = 0
+ "  go syntax-highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+" autocmd vimenter * NERDTree
 colorscheme space-vim-dark
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
