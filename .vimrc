@@ -88,6 +88,10 @@ Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'le
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" git
+Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " This to install ctags
 Plug 'majutsushi/tagbar'
 " This to install node
