@@ -88,6 +88,7 @@ Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'html','javascript', 'css', 'le
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mbbill/undotree'
 " git
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-fugitive'
@@ -107,8 +108,8 @@ call plug#end()
 " augroup END
 
 " setting for leader keymapping
-let mapleader=';'
-let g:mapleader=';'
+let mapleader='.'
+let g:mapleader='.'
 let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " disable warning :"vim-go:iniialized gopls"
@@ -146,7 +147,8 @@ let g:ale_fixers = {
 
 "These are used for open vimrc and activate vimrc without exitingvim
 nnoremap <leader>v :call OpenVimrc()<cr>
-nnoremap <leader>a :source ~/.vimrc<cr>
+nnoremap <leader>s :source ~/.vimrc<cr>
+
 
 " ====================================== "
 " === Self defined keyboard shortcuts === "
@@ -155,9 +157,13 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap<F5>   :call PreviewHtml()<CR>
 map <space><CR> :nohlsearch<CR>
 nnoremap<leader>m :w<cr>
+nnoremap<leader>p :q<cr>
 inoremap kk <esc>
 map <c-p> :FZF<CR>
 nmap <F8> :TagbarToggle<CR>
+nnoremap <F6> :UndotreeToggle<cr>
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 " ===
 " === split
 " ===
