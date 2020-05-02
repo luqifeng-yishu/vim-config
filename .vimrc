@@ -154,7 +154,7 @@ nnoremap <leader>s :source ~/.vimrc<cr>
 " === Self defined keyboard shortcuts === "
 " ====================================== "
 map <C-n> :NERDTreeToggle<CR>
-nnoremap<F5>   :call PreviewHtml()<CR>
+au FileType go nmap <leader>r <Plug>(go-run)
 map <space><CR> :nohlsearch<CR>
 nnoremap<leader>m :w<cr>
 nnoremap<leader>p :q<cr>
