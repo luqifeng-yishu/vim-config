@@ -155,6 +155,7 @@ nnoremap <leader>s :source ~/.vimrc<cr>
 " ====================================== "
 map <C-n> :NERDTreeToggle<CR>
 au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>gd <Plug>(go-doc)
 map <space><CR> :nohlsearch<CR>
 nnoremap<leader>m :w<cr>
 nnoremap<leader>p :q<cr>
