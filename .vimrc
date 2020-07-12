@@ -89,6 +89,13 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mbbill/undotree'
+" python
+
+Plug 'tmhedberg/SimpylFold'
+Plug 'tweekmonster/braceless.vim'
+Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 " git
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-fugitive'
@@ -110,8 +117,8 @@ call plug#end()
 " setting for leader keymapping
 let mapleader='.'
 let g:mapleader='.'
-let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:rainbow_active = 1
 " disable warning :"vim-go:iniialized gopls"
 let g:go_gopls_enabled = 0
  "  go syntax-highlighting
@@ -154,11 +161,12 @@ nnoremap <leader>s :source ~/.vimrc<cr>
 " === Self defined keyboard shortcuts === "
 " ====================================== "
 map <C-n> :NERDTreeToggle<CR>
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>gd <Plug>(go-doc)
+" au FileType go nmap <leader>r <Plug>(go-run)
 map <space><CR> :nohlsearch<CR>
 nnoremap<leader>m :w<cr>
-nnoremap<leader>p :q<cr>
+nnoremap<leader>u :q<cr>
+nnoremap<C-t> :BTags<cr>
+noremap q; :History: <cr>
 inoremap kk <esc>
 map <c-p> :FZF<CR>
 nmap <F8> :TagbarToggle<CR>
@@ -199,7 +207,7 @@ vmap <silent> <Leader>w <Plug>TranslateWV
 " Leader>r 替换光标下的文本为翻译内容
 nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV
-
+map <Leader>r :call RunCode()<CR>
 " =============================== "
 " === Self defined funcations === "
 " =============================== "
@@ -216,4 +224,38 @@ function! OpenVimrc()
 	exec 'e ~/.vimrc'
 endfunction
 
-
+function! RunCode()
+	exec "w"
+set splitbelow
+	if &filetype == 'python'
+		" :!python3 %
+		" :sp
+		:terminal python3 %
+	elseif &filetype == 'html'
+		silent! exec "!chromium % &"
+	elseif &filetype == 'xml'
+		silent! exec "!chromium % &"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -Wall -o ./bin/%<"
+		:sp
+		:terminal ./bin/%<
+	elseif &filetype == 'c'
+		exec "!gcc % -Wall -o ./bin/%<"
+		" !./bin/%<
+		:sp
+		:terminal ./bin/%<
+	elseif &filetype == 'go'
+		" :sp
+		" :terminal go run %
+		:GoRun<CR>
+	elseif &filetype == 'java'
+		exec "!find % -name '*.java' > temp"
+		exec "!javac -cp ../bin -d ../bin/ @temp"
+		exec "!rm temp"
+	elseif &filetype == 'sh'
+		:sp
+		:terminal bash %
+	endif
+endfunction
