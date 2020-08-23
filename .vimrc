@@ -59,7 +59,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " 打开文件自动定位到最后编辑的位置
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
-  let $HOME='/home/mofeng'
+  let $HOME='/home/lqf'
  " set paste
 
 "pecify a directory for plugins
@@ -68,7 +68,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'luochen1990/rainbow'
-Plug 'zxqfl/tabnine-vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
@@ -89,6 +88,7 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mbbill/undotree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " python
 
 Plug 'tmhedberg/SimpylFold'
@@ -115,9 +115,10 @@ call plug#end()
 " augroup END
 
 " setting for leader keymapping
-let mapleader='.'
-let g:mapleader='.'
+let mapleader=','
+let g:mapleader=','
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:user_emmet_leader_key='<C-Z>'
 let g:rainbow_active = 1
 " disable warning :"vim-go:iniialized gopls"
 let g:go_gopls_enabled = 0
@@ -163,7 +164,7 @@ nnoremap <leader>s :source ~/.vimrc<cr>
 map <C-n> :NERDTreeToggle<CR>
 " au FileType go nmap <leader>r <Plug>(go-run)
 map <space><CR> :nohlsearch<CR>
-nnoremap<leader>m :w<cr>
+nnoremap mm :w<cr>
 nnoremap<leader>u :q<cr>
 nnoremap<C-t> :BTags<cr>
 noremap q; :History: <cr>
@@ -212,12 +213,12 @@ map <Leader>r :call RunCode()<CR>
 " === Self defined funcations === "
 " =============================== "
 
-function! PreviewHtml() 
-exec 'w'
-if &filetype == 'html'
-	exec '!chromium %'
-endif
-endfunction
+" function! PreviewHtml() 
+" exec 'w'
+" if &filetype == 'html'
+" 	exec '!chromium %'
+" endif
+" endfunction
 
 "settings for openvimrc
 function! OpenVimrc()
@@ -232,9 +233,7 @@ set splitbelow
 		" :sp
 		:terminal python3 %
 	elseif &filetype == 'html'
-		silent! exec "!chromium % &"
-	elseif &filetype == 'xml'
-		silent! exec "!chromium % &"
+		 exec "!firefox % &"
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
 	elseif &filetype == 'cpp'
